@@ -15,7 +15,7 @@ In theory, a dashboard or monitoring app could use a registry service like this 
 
 ## Validation
 
-Validations such as min/max-length are not implemented. However, AuthN / AuthZ, Auth token expiry, and fields mandatory are checked in the APIs.
+Validations such as fields min/max-length are not implemented. However, AuthN / AuthZ, Auth token expiry, and fields mandatory are checked in the APIs.
 
 ## Installation
 
@@ -28,7 +28,6 @@ To install it:
 3. Install dependency packages from the command line:
    1. Change directory to the project's root directory.
    2. Run `pip install -r requirements.txt` to install all dependencies.
-
 
 ## Running the web service
 
@@ -80,19 +79,16 @@ but it works just fine for this small example web service.
 
 Everytime the service is launched, it creates a fresh, empty, in-memory SQLite database. Any changes will persist, until the app is restarted.
 
-## Setting configuration options
+## Login
 
-The Device Registry Service stores all its configuration options in `config.py`.
-The following configuration options have default values,
-but they may optionally be overridden using environment variables:
+There are 2 users can be used for testing purposes:
 
-* `AUTH_USERNAME1`: the username for user 1
-* `AUTH_PASSWORD1`: the password for user 1
-* `AUTH_USERNAME2`: the username for user 2
-* `AUTH_PASSWORD2`: the password for user 2
-* `AUTH_TOKEN_EXPIRATION`: the expiration time in seconds for authentication tokens
+| Username  | Password |
+| ------------- | ------------- |
+| pythonista| I<3testing  |
+| engineer  | Muh5devices |
 
-***Warning:*** Overriding these options is not recommended for most cases.
+Access tokens will expire within an hour after issued.
 
 ## Reading the REST API docs
 
