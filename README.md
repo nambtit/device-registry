@@ -1,4 +1,4 @@
-# DeviDce Registry
+# Device Registry
 
 This project is the **Device Registry Service**,
 an example REST API web service for registering smart devices.
