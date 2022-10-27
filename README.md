@@ -31,6 +31,8 @@ To install it:
 
 ## Running the web service
 
+### From your IDE
+
 The Device Registry Service is written using [Flask](https://flask.palletsprojects.com/en/2.0.x/).
 Before running it from the command line,
 set the `FLASK_APP` environment variable to the name of the app's main module, `registry`.
@@ -39,6 +41,7 @@ set the `FLASK_APP` environment variable to the name of the app's main module, `
 * macOS and Linux: `export FLASK_APP=registry`
 
 To run the web service, run `flask run`.
+
 You should see output like this from the command line:
 
 ```bash
@@ -55,6 +58,16 @@ When running, the web service can be accessed at `http://127.0.0.1:5000/`
 (the address printed by the `flask run` output).
 If you load that address in a web browser, you should see docs for the REST API.
 
+### From Docker
+To build the image, navigate to the root of the project:
+```bash
+docker build -t device-registry .
+```
+
+To run the service and make it accessible from port 9000:
+```bash
+docker run -p 9000:5000 device-registry
+```
 
 ## Choosing a database
 

@@ -1,0 +1,263 @@
+{
+	"info": {
+		"_postman_id": "585836a9-bf0e-4998-8f02-5ad98ae10364",
+		"name": "DeviceRegistry",
+		"description": "This is the API collection for the project **Device Registry Service**, an example REST API web service for registering smart devices.\n\nThe **Device Registry Service** stores records for all smart devices a user owns in one central place. A home could have multiple kinds of smart devices: WiFi routers, voice assistants, thermostats, light switches, and even appliances. This service stores information like name, location, type, model, and serial number for each device. Its API enables callers to practice CRUD (Create, Retrieve, Update, Delete) operations.\n\nValidations such as min/max-length are not implemented. However, AuthN / AuthZ, Auth token expiry, and fields mandatory are checked in the APIs.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "22511915"
+	},
+	"item": [
+		{
+			"name": "Authenticate",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{username1}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{username1-password}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/authenticate/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"authenticate",
+						""
+					]
+				},
+				"description": "Uses HTTP basic authentication to generate an authentication token. Any resource that requires authentication can use either basic auth or this token."
+			},
+			"response": []
+		},
+		{
+			"name": "Get devices",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						""
+					]
+				},
+				"description": "Gets a list of all devices owned by the user. Requires authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Add device",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"name-2\",\n    \"location\": \"saigon\",\n    \"type\": \"air conditioner\",\n    \"model\": \"electrolux 2022\",\n    \"serial_number\": \"electrolux-2022\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/devices/",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						""
+					]
+				},
+				"description": "Adds a new device owned by the user. Requires authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Get device by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"3"
+					]
+				},
+				"description": "Gets a device owned by the user. Requires authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Get device report by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/1/report",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"1",
+						"report"
+					]
+				},
+				"description": "Prints a text-based report for a device owned by the user. Requires authentication."
+			},
+			"response": []
+		},
+		{
+			"name": "Partial update device [name or location] by ID",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": \"hanoi\",\n    \"name\": \"name-1\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/devices/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"1"
+					]
+				},
+				"description": "Partially updates a device owned by the user. Requires authentication.\n\nIt is allowed for device location and/or name to be updated using this API."
+			},
+			"response": []
+		},
+		{
+			"name": "Update device by ID",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"location\": \"saigon\",\n    \"model\": \"sony bravia\",\n    \"name\": \"name-1\",\n    \"serial_number\": \"sonytvbravia43\",\n    \"type\": \"tv\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/devices/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"1"
+					]
+				},
+				"description": "Updates a device owned by the user. Requires authentication. All properties below are required in the payload:\n\n\\*   location\n\\*   model\n\\*   name\n\\*   serial_number\n\\*   type"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete device by ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/devices/3",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"devices",
+						"3"
+					]
+				},
+				"description": "Deletes a device owned by the user. Requires authentication."
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJIUzUxMiIsImlhdCI6MTY2Njg4MzQxOCwiZXhwIjoxNjY2ODg3MDE4fQ.eyJ1c2VybmFtZSI6InB5dGhvbmlzdGEifQ.5Kq1J8EOZMUVrdU0lSRNW7jKIAqheDFJhysBRwzRXlfInWOsLZ0wrzEdPnBK-Co0iMwLR3vxaGCKewrH5FOZBw",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:9000",
+			"type": "string"
+		},
+		{
+			"key": "username1",
+			"value": "pythonista",
+			"type": "string"
+		},
+		{
+			"key": "username1-password",
+			"value": "I<3testing",
+			"type": "string"
+		},
+		{
+			"key": "username2",
+			"value": "engineer",
+			"type": "string"
+		},
+		{
+			"key": "username2-password",
+			"value": "Muh5devices",
+			"type": "string"
+		}
+	]
+}
