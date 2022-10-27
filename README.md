@@ -66,8 +66,10 @@ docker build -t device-registry .
 
 To run the service and make it accessible from port 9000:
 ```bash
-docker run -p 9000:5000 device-registry
+docker run -p 9000:5000 --rm device-registry
 ```
+
+After the service is started, APIs are ready to be consumed. Please check [DeviceRegistry collection](DeviceRegistry.postman_collection.json) for the examples.
 
 ## Choosing a database
 
