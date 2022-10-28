@@ -19,6 +19,8 @@ Validations such as fields min/max-length are not implemented. However, AuthN / 
 
 ## Installation
 
+You can skip this step if you plan to run the service [from Docker](#from-docker)
+
 The Device Registry Service is designed to run on your local machine.
 It should run on any operating system (Windows, macOS, Linux).
 To install it:
@@ -56,7 +58,6 @@ $ flask run
 
 When running, the web service can be accessed at `http://127.0.0.1:5000/`
 (the address printed by the `flask run` output).
-If you load that address in a web browser, you should see docs for the REST API.
 
 ### From Docker
 To build the image, navigate to the root of the project:
@@ -93,3 +94,7 @@ Access tokens will expire within an hour after issued.
 ## Reading the REST API docs
 
 Please check [DeviceRegistry collection](DeviceRegistry.postman_collection.json) for the examples.
+
+## Credit
+
+The source was forked from [Mark Winteringham's work](https://www.manning.com/books/testing-web-apis).
